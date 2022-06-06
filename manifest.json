@@ -1,0 +1,37 @@
+{
+    "name": "Navigation Recorder",
+    "description": "This extension records the navigation behaviour using the website of the university of Regensburg.",
+    "author": "Michael <vairasza> Bierschneider",
+    "version": "1.0",
+    "manifest_version": 3,
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "permissions": [
+        "scripting",
+        "tabs",
+        "activeTab",
+        "storage",
+        "webNavigation"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_icon": {
+            "16": "images/icon_16px.png"
+        },
+        "default_title": "Navigation Recorder"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*.uni-regensburg.de/*",
+                "https://*.uni-regensburg.de/*"
+            ],
+            "js": [
+                "content-script.js"
+            ]
+        }
+    ]
+}
